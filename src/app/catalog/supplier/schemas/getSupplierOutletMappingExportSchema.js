@@ -1,0 +1,71 @@
+const { errorSchemas } = require("../../../commons/schemas/errorSchemas");
+
+const getSupplierOutletMappingExportSchema = {
+  tags: ["SUPPLIER Outlet Mapping Export"],
+  summary: "API to list Supplier outlet mapping export",
+  headers: { $ref: "request-headers#" },
+  params: {
+    type: "object",
+    properties: {
+      company_id: { type: "integer" },
+      outlet_id: { type: "integer" },
+    },
+  },
+  response: {
+    200: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          supplier_code: { type: "string" },
+          supplier_name: { type: "string" },
+          add1: { type: ["string", "null"] },
+          add2: { type: ["string", "null"] },
+          pincode: { type: ["string", "null"] },
+          city_name: { type: ["string", "null"] },
+          state_name: { type: ["string", "null"] },
+          country_name: { type: ["string", "null"] },
+          contact_person: { type: ["string", "null"] },
+          designation: { type: ["string", "null"] },
+          phone: { type: ["string", "null"] },
+          mobile: { type: ["string", "null"] },
+          alter_mobile_no: { type: ["string", "null"] },
+          email: { type: ["string", "null"] },
+          alter_email: { type: ["string", "null"] },
+          gstin: { type: ["string", "null"] },
+          pan_number: { type: ["string", "null"] },
+          msme_applicable: { type: "boolean" },
+          msme_number: { type: ["string", "null"] },
+          opening_balance: { type: ["string", "null"] },
+          balance: { type: ["string", "null"] },
+          credit_days: { type: ["string", "null"] },
+          tot_margin_percentage: { type: ["string", "null"] },
+          tot_margin_value: { type: ["string", "null"] },
+          ac_name: { type: ["string", "null"] },
+          bankname: { type: ["string", "null"] },
+          bank_ac_no: { type: ["string", "null"] },
+          ifsccode: { type: ["string", "null"] },
+          pan_card_url: { type: ["string", "null"] },
+          gstin_url: { type: ["string", "null"] },
+          bank_passbook_url: { type: ["string", "null"] },
+          outlet_id: { type: "integer" },
+          stroe_code: { type: ["string", "null"] },
+          outlet_name: { type: ["string", "null"] },
+          // Outlet working days
+          sunday: { type: "boolean" },
+          monday: { type: "boolean" },
+          tuesday: { type: "boolean" },
+          wednesday: { type: "boolean" },
+          thursday: { type: "boolean" },
+          friday: { type: "boolean" },
+          saturday: { type: "boolean" },
+          contact_person: { type: "string" },
+          fssaino: { type: "string" },
+        },
+      },
+    },
+    ...errorSchemas,
+  },
+};
+
+module.exports = getSupplierOutletMappingExportSchema;

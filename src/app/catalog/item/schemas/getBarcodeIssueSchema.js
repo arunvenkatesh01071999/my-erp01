@@ -1,0 +1,70 @@
+const { errorSchemas } = require("../../../commons/schemas/errorSchemas");
+
+const getBarcodeIssueSchema = {
+  tags: ["Item"],
+  summary: "This API is to retrieve item barcode details",
+  headers: { $ref: "request-headers#" },
+  params: {
+    type: "object",
+    properties: {
+      barcode: { type: "string" },
+    },
+    required: ["barcode"],
+  },
+  response: {
+    200: {
+      type: "object",
+      properties: {
+        id: { type: "integer" },
+        prod_id: { type: "integer" },
+        barcode: { type: "string" },
+        // is_sold: { type: "boolean" },
+        // is_active: { type: "boolean" },
+        // company_id: { type: ["integer", "null"] },
+        // created_at: { type: "string", format: "date-time" },
+        // updated_at: { type: "string", format: "date-time" },
+        // created_by: { type: "integer" },
+        // updated_by: { type: ["integer", "null"] },
+        // purchase_no: { type: ["string",] },
+        outlet_id: { type: "integer" },
+        // is_verified: { type: "integer" },
+        outlet_discount: { type: "string" },
+        // is_closed: { type: "integer" },
+        // purchase_details_id: { type: ["integer", "null"] },
+        dis_per: { type: "string" },
+        // is_missed: { type: "boolean" },
+        product_code: { type: "string" },
+        pro_code: { type: "string" },
+        pro_name: { type: "string" },
+        short_name: { type: "string" },
+        pro_description: { type: "string" },
+        manufacturing_date: { type: ["string", "null"] },
+        expiry_date: { type: ["string", "null"] },
+        type: { type: "integer" },
+        sub_cat: { type: "integer" },
+        uom: { type: "integer" },
+        pur_rate: { type: "number" },
+        sale_rate: { type: "number" },
+        wholesale_rate: { type: "number" },
+        mrp: { type: "number" },
+        gst: { type: "number" },
+        hsn: { type: "string" },
+        op_stk: { type: "string" },
+        min_stock: { type: "string" },
+        allow_neg_stk: { type: "boolean" },
+        wscale: { type: "boolean" },
+        head_id: { type: "integer" },
+        cat_id: { type: "integer" },
+        product_type: { type: "string" },
+        main_product_id: { type: ["integer", "null"] },
+        main_uom_id: { type: "integer" },
+        convertion_factor: { type: "string" },
+        qty: { type: "number" }
+
+      },
+    },
+    ...errorSchemas,
+  },
+};
+
+module.exports = getBarcodeIssueSchema;

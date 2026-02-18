@@ -1,0 +1,20 @@
+const { errorSchemas } = require("../../../commons/schemas/errorSchemas");
+
+const postCategoryDetailsSchema = {
+    tags: ["CATEGORY"],
+    summary: "This API is to fetch categories",
+    headers: { $ref: "request-headers#" },
+
+    response: {
+        200: {
+            type: "object",
+            properties: {
+                success: { type: "boolean" }
+            }
+        },
+
+        ...errorSchemas
+    }
+};
+
+module.exports = postCategoryDetailsSchema;

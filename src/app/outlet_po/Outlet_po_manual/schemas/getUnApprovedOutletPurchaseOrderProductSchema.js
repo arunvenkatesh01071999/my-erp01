@@ -1,0 +1,114 @@
+const { errorSchemas } = require("../../../commons/schemas/errorSchemas");
+
+const getUnApprovedOutletPurchaseOrderProductSchema = {
+  tags: ["Outlet PURCHASE ORDER"],
+  summary: "API to list items with balance less than or equal to minimum stock and filter by supplier",
+  headers: { $ref: "request-headers#" },
+  params: {
+    type: "object",
+    properties: {
+      from_date: { type: "string", format: "date" },
+      to_date: { type: "string", format: "date" },
+      company_id: { type: "integer" },
+      outlet_id: { type: "integer" },
+      approved: {
+        type: "integer",
+        enum: [0, 1, 2], // 0 = All , 1 = approved, 2 = unapproved
+      },
+    },
+    required: ["from_date", "to_date", "approved"],
+  },
+  // response: {
+  //   200: {
+  //     type: "array",
+  //     items: {
+  //       type: "object",
+  //       properties: {
+  //         Sno: { type: "integer" },
+  //         id: { type: "integer" },
+  //         financial_year: { type: "string", format: "date" },
+  //         po_no: { type: "string" },
+  //         po_date: { type: "string", format: "date" },
+  //         outlet_id: { type: "integer" },
+  //         supplier_id: { type: "integer" },
+  //         supplier_name: { type: "string" },
+  //         supplier_short_name: { type: "string" },
+  //         total_items: { type: "number" },
+  //         total_order_qty: { type: "number" },
+  //         sub_total_amt: { type: "number" },
+  //         total_gst_amt: { type: "number" },
+  //         total_cess_amt: { type: "number" },
+  //         grand_total_amt: { type: "number" },
+  //         roff: { type: "number" },
+  //         approval: { type: "integer" },
+  //         is_approved_by: { type: ["integer", "null"] },
+  //         approver_name: { type: ["string", "null"] },
+  //         expiry_date: { type: "string", format: "date" },
+  //         reason: { type: "string" },
+  //         expired: { type: "boolean" },
+  //         po_status: { type: "string" },
+  //         po_type_name: { type: "string" },
+  //         po_details_lines: {
+  //           type: "array",
+  //           items: {
+  //             type: "object",
+  //             properties: {
+  //               id: { type: "integer" },
+  //               outlet_po_master_id: { type: "integer" },
+  //               financial_year: { type: "string", format: "date" },
+  //               po_no: { type: "string" },
+  //               po_date: { type: "string", format: "date" },
+  //               outlet_name: { type: "string" },
+  //               outlet_id: { type: "integer" },
+  //               balance: { type: "integer" },
+  //               prod_id: { type: "integer" },
+  //               pro_code: { type: "string" },
+  //               pro_name: { type: "string" },
+  //               cat_id: { type: "integer" },
+  //               sub_cat_id: { type: "integer" },
+  //               head_id: { type: "integer" },
+  //               type_design_id: { type: "integer" },
+  //               uom_id: { type: "integer" },
+  //               barcode: { type: "string" },
+  //               mrp: { type: "number" },
+  //               purchase_rate: { type: "integer" },
+  //               gst: { type: "number" },
+  //               cess: { type: "number" },
+  //               qty: { type: "integer" },
+  //               loose_qty: { type: "integer" },
+  //               amount: { type: "number" },
+  //               company_id: { type: "integer" },
+  //               supplier_id: { type: "number" },
+  //               recived_qty: { type: "number" },
+  //               expired: { type: "boolean" },
+  //               gst_amount: { type: "number" },
+  //               cgst: { type: "number" },
+  //               sgst: { type: "number" },
+  //               cess: { type: "number" },
+  //               cess_amt: { type: "number" },
+  //               case_qty: { type: "number" },
+  //               created_by: { type: "integer" },
+  //               updated_by: { type: ["integer", "null"] },
+  //               created_at: { type: "string", format: "date-time" },
+  //               updated_at: { type: "string", format: "date-time" },
+  //             },
+  //           },
+  //         },
+  //       },
+  //     },
+  //   },
+  //   ...errorSchemas,
+  // },
+  response: {
+    200: {
+      type: "array",
+      items: {
+        type: "object",
+        additionalProperties: true
+      }
+    },
+    ...errorSchemas
+  }
+};
+
+module.exports = getUnApprovedOutletPurchaseOrderProductSchema;
